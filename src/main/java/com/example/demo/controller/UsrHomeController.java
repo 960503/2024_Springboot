@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UsrHomeController {
 	
 	
-	@GetMapping("/usr/home/count")
+	@GetMapping("/usr/home/main")
 	@ResponseBody
 	public int ShowMain() {
-		
+
 		return 10;
-		
 	}
 	
-	@GetMapping("/usr/home/count2")
+	@GetMapping("/usr/home/main2")
 	@ResponseBody
 	public String ShowMain2() {
 		return "안녕하세요";
