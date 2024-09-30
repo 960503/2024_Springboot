@@ -2,9 +2,7 @@ package com.example.basic;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +27,12 @@ public class ArticleController {
         return articleList;
     }
 
-    @RequestMapping("/article/write")
+    @GetMapping("/article/write")
+    public String articleWrite(){
+        return ("article/article-write");
+    }
+
+    @PostMapping("/article/write")
     @ResponseBody
     public String write(String title, String body) {
 
@@ -68,13 +71,10 @@ public class ArticleController {
         return "게시물이 성공적으로 수정되었습니다"; // 브라우저 출력 => html 문자열로 출력
     }
 
-    @RequestMapping("/show-html")
+    @RequestMapping("/fruits")
     public String showHtml() {
-        return "test"; // .html 확장자를 스프링부트가 자동으로 붙여줌
+        return "test/test"; // .html 확장자를 스프링부트가 자동으로 붙여줌
     }
 
-    @RequestMapping("/article-write")
-    public String articleWrite(){
-        return ("article/article-write");
-    }
+
 }
