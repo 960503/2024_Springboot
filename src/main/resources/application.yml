@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 server:
   port: 8081
 
@@ -10,3 +11,14 @@ spring:
 
 mybatis:
   mapper-locations: mappers/*.xml
+=======
+spring:
+ application:
+  name: demo
+
+ datasource:
+  driver-class-name: com.mysql.jdbc.Driver
+  url: "jdbc:mysql://localhost:3306/2024_09_SBAM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull"
+  username: root
+  password:
+>>>>>>> e52bc0b4f8c12fc8d3f13351fde67bf2c6f55711
