@@ -6,14 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
 
-    @GetMapping("/variable")
-    public String test(){
+    @GetMapping("/test/variable")
+    public String variable(){
         return "test/variable";
     }
 
-    @GetMapping("/condition")
+    @GetMapping("/test/condition")
     public String condition(){
         return "test/condition";
+    }
+
+    @GetMapping("/test/loop")
+    public String loop(){
+        return "test/loop";
     }
 
 }

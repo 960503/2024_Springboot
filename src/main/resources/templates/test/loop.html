@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loop</title>
+</head>
+<body>
+<!-- sequence for -->
+<div th:each="num : ${#numbers.sequence(1,10)}" th:text="${num}"></div>
+<hr>
+
+<div th:with="dan=2" th:each="num2 : ${#numbers.sequence(1, 9)}">
+    <div>
+        <span th:text="${dan} + ' x ' + ${num2} + '='"></span>
+        <span th:text="${dan * num2}"></span>
+    </div>
+</div>
+
+
+<!-- for each -->
+</body>
+</html>

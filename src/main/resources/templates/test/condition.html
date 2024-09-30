@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<div th:with="num=19">
+<div th:with="age=60">
 
-    <span th:if="${num < 20 || num > 60}" th:text="'할인대상입니다.'"></span>
+    <span th:if="${age < 20 || age >= 60}">할인대상입니다.</span>
 
-    <span th:unless="${num < 20 || num > 60}" th:text="'비할인대상입니다.'"></span>
+    <span th:unless="${age < 20 || age >= 60}">비할인대상입니다.</span>
 </div>
 
 </body>
