@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class TestController {
+public class ArticleController {
 
     private final ArticleDao articleDao;
 
@@ -72,5 +71,10 @@ public class TestController {
     @RequestMapping("/show-html")
     public String showHtml() {
         return "test"; // .html 확장자를 스프링부트가 자동으로 붙여줌
+    }
+
+    @RequestMapping("/article-write")
+    public String articleWrite(){
+        return ("article/article-write");
     }
 }
