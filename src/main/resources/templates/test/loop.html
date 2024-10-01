@@ -9,14 +9,32 @@
 <div th:each="num : ${#numbers.sequence(1,10)}" th:text="${num}"></div>
 <hr>
 
-<div th:with="dan=2" th:each="num2 : ${#numbers.sequence(1, 9)}">
-    <div>
-        <span th:text="${dan} + ' x ' + ${num2} + '='"></span>
-        <span th:text="${dan * num2}"></span>
+<div th:with="dan=2">
+    <div th:each="num2 : ${#numbers.sequence(1, 9)}" th:text="${dan} + ' x ' + ${num2} + '=' + ${dan * num2}"></div>
+</div>
+<hr>
+
+<div>
+    <div th:each="dan2 : ${#numbers.sequence(2, 9)}">
+        <div th:each="num3 : ${#numbers.sequence(1, 9)}" th:text="${dan2} + ' X ' + ${num3} + '=' + ${dan2 * num3}"></div>
+    </div>
+</div>
+<hr>
+
+<!-- 짝수 단만 출력 -->
+<div>
+    <div th:each="dan3 : ${#numbers.sequence(2, 9)}" th:if="${dan3 % 2 == 0}">
+        <div th:each="num3 : ${#numbers.sequence(1, 9)}" th:text="${dan3} + ' X ' + ${num3} + '=' + ${dan3 * num3}"></div>
+    </div>
+</div>
+<hr>
+
+<!-- 홀수 단만 출력 -->
+<div>
+    <div th:each="dan3 : ${#numbers.sequence(2, 9)}" th:if="${dan3 % 2 != 0}">
+        <div th:each="num3 : ${#numbers.sequence(1, 9)}" th:text="${dan3} + ' X ' + ${num3} + '=' + ${dan3 * num3}"></div>
     </div>
 </div>
 
-
-<!-- for each -->
 </body>
 </html>
