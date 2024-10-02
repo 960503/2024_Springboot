@@ -7,8 +7,20 @@
 <body>
 <h1>게시글 목록</h1>
 <ul>
+    <li>
+        <a href="/article/write">게시물 작성</a>
+    </li>
+    <li>
+        <a href="/article/list">게시물 목록
+        </a></li>
+
+</ul>
+
+<hr>
+
+<ul>
     <li th:each="article : ${articleList}">
-        <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.id} + ', ' + ${article.title}"></a>
+        <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.id} + '. ' + ${article.title}"></a>
     </li>
 </ul>
 </body>

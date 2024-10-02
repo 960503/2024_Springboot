@@ -7,6 +7,18 @@
 <body>
 <h1>게시글 상세보기</h1>
 
+<ul>
+    <li>
+        <a href="/article/write">게시물 작성</a>
+    </li>
+    <li>
+        <a href="/article/list">게시물 목록
+        </a></li>
+
+</ul>
+
+<hr>
+
 <form th:action="@{|/article/modify/${article.id}|}" method="post">
     <div>
         <label for="title">제목</label>

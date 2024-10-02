@@ -6,12 +6,30 @@
     <title>article-write</title>
 </head>
 <body>
+<ul>
+    <li>
+        <a href="/article/write">게시물 작성</a>
+    </li>
+    <li>
+        <a href="/article/list">게시물 목록
+        </a></li>
 
-<form action="/article/write" method="POST">
+</ul>
+
+<hr>
+<h1>글 작성</h1>
+
+<form action="/article/write" method="POST" onsubmit="chekSubmit();">
     <input type="text" name="title" placeholder="제목을 입력해주세요">
     <input type="text" name="body" placeholder="내용을 입력해주세요">
     <input type="submit" value="등록">
-    </form>
+</form>
+
+<script>
+    function chekSubmit() {
+        alert('게시글이 작성되었습니다.');
+    }
+</script>
 
 </body>
 </html>
