@@ -2,6 +2,7 @@ package com.example.basic;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,24 +13,31 @@ public class ArticleController {
 
     private final ArticleDao articleDao;
 
-    @RequestMapping("/article/detail/{id}")
-    @ResponseBody
-    public Article detail(@PathVariable("id") long id) {
-        Article article = articleDao.findById(id);
+    @RequestMapping("/article/main")
+    public String main() {
 
-        return article;
+        return "article/main";
+    }
+
+    @RequestMapping("/article/detail/{id}")
+    public String detail(@PathVariable("id") long id, Model model) {
+        Article article = articleDao.findById(id);
+        model.addAttribute("article", article);
+
+        return "article/detail";
     }
 
     @RequestMapping("/article/list")
-    @ResponseBody
-    public List<Article> list() {
+    public String list(Model model) {
         List<Article> articleList = articleDao.findAll();
-        return articleList;
+        model.addAttribute("articleList", articleList);
+
+        return "article/list";
     }
 
     @GetMapping("/article/write")
-    public String articleWrite(){
-        return ("article/article-write");
+    public String articleWrite() {
+        return "article/write";
     }
 
     @PostMapping("/article/write")
@@ -56,8 +64,7 @@ public class ArticleController {
     }
 
     @RequestMapping("/article/modify/{id}")
-    @ResponseBody
-    public String update(@PathVariable("id") long id, String title, String body) {
+    public String update(@PathVariable("id") long id, String title, String body, Model model) {
 
         // 빌더 방식
         Article article = Article.builder()
@@ -67,14 +74,16 @@ public class ArticleController {
                 .build();
 
         articleDao.update(article);
+        model.addAttribute("article", article);
 
-        return "게시물이 성공적으로 수정되었습니다"; // 브라우저 출력 => html 문자열로 출력
+        return "article/detail";
     }
 
-    @RequestMapping("/fruits")
+    @RequestMapping("/show-html")
     public String showHtml() {
-        return "test/test"; // .html 확장자를 스프링부트가 자동으로 붙여줌
+        return "test"; // .html 확장자를 스프링부트가 자동으로 붙여줌
     }
+
 
 
 }
