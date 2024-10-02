@@ -74,7 +74,7 @@ public class ArticleController {
 
         articleDao.update(article);
 
-        return "redirect:/article/list"; // 브라우저 출력 => html 문자열로 출력
+        return "redirect:/article/detail/%d".formatted(id);
     }
 
     @RequestMapping("/show-html")
