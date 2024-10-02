@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>게시글 상세보기</h1>
+
 <form th:action="@{|/article/modify/${article.id}|}" method="post">
     <div>
         <label for="title">제목</label>
@@ -20,6 +21,11 @@
     </div>
     <input type="submit" value="수정">
 </form>
-<button></button>
+
+<form th:action="@{|/article/delete/${article.id}|}" method="post">
+
+    <input type="submit" value="삭제">
+
+</form>
 </body>
 </html>

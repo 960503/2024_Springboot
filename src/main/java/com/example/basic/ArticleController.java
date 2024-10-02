@@ -41,7 +41,6 @@ public class ArticleController {
     }
 
     @PostMapping("/article/write")
-    @ResponseBody
     public String write(String title, String body) {
 
         // 코드 정리 단축키 -> 컨트롤 + 알트 + L
@@ -52,19 +51,19 @@ public class ArticleController {
 
         articleDao.save(article);
 
-        return "게시물이 성공적으로 저장되었습니다";
+        return "redirect:/article/list"; //redirect: url작성 != 템플릿이름아님!
     }
 
     @RequestMapping("/article/delete/{id}")
-    @ResponseBody
     public String delete(@PathVariable long id) {
+
         articleDao.deleteById(id);
 
-        return "게시물이 성공적으로 삭제되었습니다.";
+        return "redirect:/article/list";
     }
 
     @RequestMapping("/article/modify/{id}")
-    public String update(@PathVariable("id") long id, String title, String body, Model model) {
+    public String update(@PathVariable("id") long id, String title, String body) {
 
         // 빌더 방식
         Article article = Article.builder()
@@ -74,9 +73,8 @@ public class ArticleController {
                 .build();
 
         articleDao.update(article);
-        model.addAttribute("article", article);
 
-        return "article/detail";
+        return "redirect:/article/list"; // 브라우저 출력 => html 문자열로 출력
     }
 
     @RequestMapping("/show-html")
