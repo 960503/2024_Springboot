@@ -43,6 +43,14 @@ public class ArticleController {
     @PostMapping("/article/write")
     public String write(String title, String body) {
 
+        if(title.trim().length() == 0 || title == null) {
+            throw new IllegalArgumentException("제목입력은 필수입니다.");
+        }
+
+        if(body.trim().length() == 0 || body == null) {
+            throw new IllegalArgumentException("내용입력은 필수입니다.");
+        }
+
         // 코드 정리 단축키 -> 컨트롤 + 알트 + L
         Article article = Article.builder()
                 .title(title)
@@ -65,6 +73,13 @@ public class ArticleController {
     @RequestMapping("/article/modify/{id}")
     public String update(@PathVariable("id") long id, String title, String body) {
 
+        if(title.trim().length() == 0 || title == null) {
+            throw new IllegalArgumentException("제목입력은 필수입니다.");
+        }
+
+        if(body.trim().length() == 0 || body == null) {
+            throw new IllegalArgumentException("내용입력은 필수입니다.");
+        }
         // 빌더 방식
         Article article = Article.builder()
                 .id(id)
@@ -76,6 +91,7 @@ public class ArticleController {
 
         return "redirect:/article/detail/%d".formatted(id);
     }
+
 
     @RequestMapping("/show-html")
     public String showHtml() {
