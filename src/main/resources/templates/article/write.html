@@ -1,52 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html layout:decorate="~{article/layout}">
+<div layout:fragment="content">
 
-    <title>article-write</title>
-</head>
-<body>
-<ul>
-    <li>
-        <a href="/article/write">게시물 작성</a>
-    </li>
-    <li>
-        <a href="/article/list">게시물 목록
-        </a></li>
+    <form id="write-form" action="/article/write" method="POST" onsubmit="checkSubmit(); return false;">
+        <input id="input-title" type="text" name="title" placeholder="제목을 입력해주세요">
+        <input id="input-body" type="text" name="body" placeholder="내용을 입력해주세요">
+        <input type="submit" value="등록">
+    </form>
+    <script>
+        function checkSubmit() {
+            const form = document.getElementById('write-form');
 
-</ul>
+            const titleInput = document.getElementById('input-title');
+            const bodyInput = document.getElementById('input-body');
 
-<hr>
-<h1>글 작성</h1>
+            if(titleInput.value.trim().length == 0) {
+                alert('제목을 입력해주세요.');
+                titleInput.focus();
+                return;
+            }
 
-<form id="write-form" action="/article/write" method="POST" onsubmit="checkSubmit(); return false;">
-    <input id="input-title" type="text" name="title" placeholder="제목을 입력해주세요">
-    <input id="input-body" type="text" name="body" placeholder="내용을 입력해주세요">
-    <input type="submit" value="등록">
-</form>
+            if(bodyInput.value.trim().length == 0) {
+                alert('내용을 입력해주세요.');
+                bodyInput.focus();
+                return;
+            }
 
-<script>
-    function checkSubmit() {
-       const form = document.getElementById('write-form');
-
-       const titleInput = document.getElementById('input-title');
-       const bodyInput = document.getElementById('input-body');
-
-      if(titleInput.value.trim().length == 0) {
-        alert('제목을 입력해주세요');
-        titleInput.focus();
-        return;
-      }
-
-      if(bodyInput.value.trim().length == 0) {
-        alert('내용을 입력해주세요');
-        bodyInput.focus();
-        return;
-      }
-
-       form.submit();
-    }
-</script>
-
-</body>
+            form.submit();
+        }
+    </script>
+    </body>
+</div>
 </html>
